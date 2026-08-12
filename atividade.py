@@ -21,7 +21,46 @@ class Consulta:
             print("Diagnóstico: [a definir]")
         print("----------------\n")
 
+class Pessoa:
+    def __init__(self, nome, idade, email):
+        self.nome = nome
+        self.idade = idade
+        self.email = email
 
+    def exibir_info(self, texto):
+        self.diagnostico = texto
+
+    def exibir_consulta(self):
+        print("\n--- Pessoa ---")
+        print(f"Data: {self.data}")
+        print(f"Paciente: {self.paciente.exibir_info()}")
+        print(f"Médico: {self.medico.exibir_info()} - Esp: {self.medico.especialidade}")
+        if self.diagnostico:
+            print(f"Diagnóstico: {self.diagnostico}")
+        else:
+            print("Diagnóstico: [a definir]")
+        print("----------------\n")
+
+class Medico:
+    def __init__(self, data, paciente, medico):
+        self.data = data
+        self.paciente = paciente
+        self.medico = medico
+        self.diagnostico = None
+
+    def registrar_diagnostico(self, texto):
+        self.diagnostico = texto
+
+    def exibir_consulta(self):
+        print("\n--- Pessoa ---")
+        print(f"Data: {self.data}")
+        print(f"Paciente: {self.paciente.exibir_info()}")
+        print(f"Médico: {self.medico.exibir_info()} - Esp: {self.medico.especialidade}")
+        if self.diagnostico:
+            print(f"Diagnóstico: {self.diagnostico}")
+        else:
+            print("Diagnóstico: [a definir]")
+        print("----------------\n")
 # ============================
 # Menu de Linha de Comando
 # ============================
