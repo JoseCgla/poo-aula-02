@@ -1,5 +1,6 @@
 import os
 
+
 # ============================
 # Classes (Arquitetura e Herança)
 # ============================
@@ -13,6 +14,7 @@ class Pessoa:
     def exibir_info(self):
         return f"Nome: {self.nome}, Idade: {self.idade}, E-mail: {self.email}"
 
+
 class Medico(Pessoa):
     def __init__(self, nome, idade, email, especialidade):
         super().__init__(nome, idade, email)
@@ -21,6 +23,7 @@ class Medico(Pessoa):
     def atender(self):
         print(f"O médico {self.nome} está atendendo.")
 
+
 class Paciente(Pessoa):
     def __init__(self, nome, idade, email, historico):
         super().__init__(nome, idade, email)
@@ -28,6 +31,7 @@ class Paciente(Pessoa):
 
     def marcar_consulta(self, medico, data):
         return Consulta(data, self, medico)
+
 
 class Consulta:
     def __init__(self, data, paciente, medico):
@@ -83,7 +87,8 @@ while True:
     print("0 - Sair")
 
     opcao = input("Escolha: ")
-    os.system("clear" if os.name == "posix" else "cls") # Ajuste para limpar tela em diferentes SOs
+    # Correção aplicada: Limpa a tela no Windows (nt) e em sistemas Unix (posix)
+    os.system('cls' if os.name == 'nt' else 'clear')
 
     # 1 - Cadastrar Médico
     if opcao == "1":
@@ -129,7 +134,7 @@ while True:
         if not medicos or not pacientes:
             print("Cadastre médicos e pacientes primeiro!\n")
             continue
-        
+
         print("Pacientes disponíveis:")
         for i, p in enumerate(pacientes):
             print(f"{i} - {p.exibir_info()}")
